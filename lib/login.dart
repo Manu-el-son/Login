@@ -18,6 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final emailController = TextEditingController();
   final passController = TextEditingController();
+  bool passToggle = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,9 +50,38 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ],
         ),
-        body: const Center(
+        body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextFormField(
+                  style: const TextStyle(fontFamily: 'Urbanist'),
+                  keyboardType: TextInputType.emailAddress,
+                  controller: emailController,
+                  decoration: InputDecoration(
+                      labelText: "Email",
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8),
+                          borderSide: const BorderSide(
+                              color: Color.fromRGBO(232, 236, 244, 100))),
+                      fillColor: const Color.fromRGBO(247, 248, 249, 100),
+                      filled: true)),
+              const SizedBox(height: 17),
+              TextFormField(
+                  style: const TextStyle(fontFamily: 'Urbanist'),
+                  keyboardType: TextInputType.emailAddress,
+                  obscureText: passToggle,
+                  controller: passController,
+                  decoration: InputDecoration(
+                    labelText: "Password",
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: const BorderSide(
+                            color: Color.fromRGBO(232, 236, 244, 100))),
+                    fillColor: const Color.fromRGBO(247, 248, 249, 100),
+                    filled: true,
+                  ))
+            ],
           ),
         ));
   }
