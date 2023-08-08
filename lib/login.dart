@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:login/signup.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -9,13 +10,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  bool _showLoginButton = true;
-  void _toggleButtons() {
-    setState(() {
-      _showLoginButton = !_showLoginButton;
-    });
-  }
-
   final emailController = TextEditingController();
   final passController = TextEditingController();
   bool passToggle = true;
@@ -23,39 +17,24 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: const Color.fromRGBO(61, 153, 112, 100),
-          toolbarHeight: 117,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(bottom: Radius.circular(30)),
-          ),
-          actions: [
-            _showLoginButton
-                ? InkWell(
-                    onTap: () {
-                      // Handle login button press
-                    },
-                    child: const Text('Login'),
-                  )
-                : ElevatedButton(
-                    onPressed: () {
-                      // Handle sign-up button press
-                    },
-                    child: const Text('Sign Up'),
-                  ),
-            IconButton(
-              onPressed: () {
-                _toggleButtons();
-              },
-              icon: const Icon(Icons.swap_horiz),
+            backgroundColor: const Color.fromRGBO(61, 153, 112, 100),
+            toolbarHeight: 117,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(bottom: Radius.circular(30)),
             ),
-          ],
-        ),
+            bottom: const TabBar(
+              tabs: [
+                Tab(text: 'Login'),
+                Tab(
+                  text: 'Sign Up',
+                )
+              ],
+            )),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextFormField(
-                  style: const TextStyle(fontFamily: 'Urbanist'),
                   keyboardType: TextInputType.emailAddress,
                   controller: emailController,
                   decoration: InputDecoration(
@@ -68,7 +47,6 @@ class _LoginScreenState extends State<LoginScreen> {
                       filled: true)),
               const SizedBox(height: 17),
               TextFormField(
-                  style: const TextStyle(fontFamily: 'Urbanist'),
                   keyboardType: TextInputType.emailAddress,
                   obscureText: passToggle,
                   controller: passController,
@@ -80,7 +58,19 @@ class _LoginScreenState extends State<LoginScreen> {
                             color: Color.fromRGBO(232, 236, 244, 100))),
                     fillColor: const Color.fromRGBO(247, 248, 249, 100),
                     filled: true,
-                  ))
+                  )),
+              const SizedBox(
+                height: 15,
+              ),
+              const Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                    'Forgot Password?',
+                    style: TextStyle(color: Color.fromRGBO(106, 112, 124, 100)),
+                  )
+                ],
+              )
             ],
           ),
         ));
