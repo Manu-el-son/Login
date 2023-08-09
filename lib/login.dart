@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login/signup.dart';
+import 'package:login/forgotpass.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -62,15 +63,45 @@ class _LoginScreenState extends State<LoginScreen> {
               const SizedBox(
                 height: 15,
               ),
-              const Row(
+              Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Text(
-                    'Forgot Password?',
-                    style: TextStyle(color: Color.fromRGBO(106, 112, 124, 100)),
-                  )
+                  InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const ResetScreen()));
+                      },
+                      child: const Text(
+                        'Forgot Password?',
+                        style: TextStyle(
+                            color: Color.fromRGBO(106, 112, 124, 100)),
+                      ))
                 ],
-              )
+              ),
+              const SizedBox(
+                height: 21,
+              ),
+              InkWell(
+                onTap: () {},
+                child: Container(
+                  height: 56,
+                  width: 331,
+                  padding: const EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    color: const Color.fromRGBO(61, 153, 112, 100),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Text(
+                    'Log In',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ),
+              ),
             ],
           ),
         ));

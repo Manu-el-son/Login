@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:login/login.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _LoginScreenState createState() => _LoginScreenState();
+  _SignUpScreenState createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final emailController = TextEditingController();
   final passController = TextEditingController();
   bool passToggle = true;
@@ -60,16 +60,29 @@ class _LoginScreenState extends State<LoginScreen> {
                     filled: true,
                   )),
               const SizedBox(
-                height: 15,
+                height: 39,
               ),
-              const Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Text(
-                    'Forgot Password?',
-                    style: TextStyle(color: Color.fromRGBO(106, 112, 124, 100)),
-                  )
-                ],
+              InkWell(
+                onTap: () {},
+                child: Container(
+                  height: 56,
+                  width: 331,
+                  padding: const EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    color: const Color.fromRGBO(61, 153, 112, 100),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: const Text(
+                    'Register',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 39,
               )
             ],
           ),
